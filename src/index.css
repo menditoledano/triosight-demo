@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  input[type="range"] {
+    @apply appearance-none bg-gray-200 h-2 rounded-full touch-manipulation;
+    min-height: 24px; /* Larger touch target */
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    @apply appearance-none w-8 h-8 rounded-full bg-[#00c7be] border-4 border-white shadow-lg cursor-pointer;
+    box-shadow: 0 0 0 1px #E5E7EB;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    @apply appearance-none w-8 h-8 rounded-full bg-[#00c7be] border-4 border-white shadow-lg cursor-pointer;
+    box-shadow: 0 0 0 1px #E5E7EB;
+  }
+
+  input[type="range"]::-ms-thumb {
+    @apply appearance-none w-8 h-8 rounded-full bg-[#00c7be] border-4 border-white shadow-lg cursor-pointer;
+    box-shadow: 0 0 0 1px #E5E7EB;
+  }
+
+  input[type="range"]:focus {
+    @apply outline-none;
+  }
+
+  input[type="range"]:focus::-webkit-slider-thumb {
+    @apply ring-4 ring-[#00c7be]/20;
+  }
+
+  input[type="range"]:focus::-moz-range-thumb {
+    @apply ring-4 ring-[#00c7be]/20;
+  }
+
+  input[type="range"]:focus::-ms-thumb {
+    @apply ring-4 ring-[#00c7be]/20;
+  }
+}
+
+body {
+  @apply bg-gray-50;
+}
+
+/* Touch-friendly improvements */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
