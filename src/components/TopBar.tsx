@@ -53,8 +53,8 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
               <Search className="w-5 h-5 text-gray-600" />
             </button>
 
-            <div className="flex items-center gap-3 pl-2 border-l border-gray-200">
-              <div className="flex flex-col items-end">
+            <div className="flex items-center gap-2 md:gap-3 pl-2 border-l border-gray-200">
+              <div className="hidden sm:flex flex-col items-end">
                 <span className="text-sm font-medium">Prof. Erez Kachel</span>
                 <span className="text-xs text-gray-500">Senior heart surgeon</span>
               </div>
@@ -62,9 +62,9 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
                 <img
                   src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=150&h=150&fit=crop"
                   alt="Profile"
-                  className="w-10 h-10 rounded-full object-cover ring-2 ring-gray-100"
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover ring-2 ring-gray-100"
                 />
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#00c7be] border-2 border-white rounded-full"></span>
+                <span className="absolute bottom-0 right-0 w-2 h-2 md:w-2.5 md:h-2.5 bg-[#00c7be] border-2 border-white rounded-full"></span>
               </div>
             </div>
           </div>
