@@ -100,7 +100,7 @@ export function PatientsProvider({ children }: { children: ReactNode }) {
     },
     {
       id: '28394',
-      name: 'Freduardo Hill',
+      name: 'Mendi Tolliver',
       email: 'freduardo@gmail.com',
       age: 42,
       gender: 'Male',

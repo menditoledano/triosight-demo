@@ -21,7 +21,7 @@ export default function Settings() {
                   <span className="absolute bottom-0 right-0 w-4 h-4 bg-mint-500 border-2 border-white rounded-full"></span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-gray-800">Prof. Erez Kachel</h3>
+                  <h3 className="font-semibold text-lg text-gray-800">Prof. David Brown</h3>
                   <p className="text-gray-500">erez.kachel@triosight.com</p>
                 </div>
               </div>
@@ -42,7 +42,7 @@ export default function Settings() {
                   <UserCircle className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                   <input
                     type="text"
-                    defaultValue="Prof. Erez Kachel"
+                    defaultValue="Prof. David Brown"
                     className="pl-10 w-full p-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-mint-500 focus:border-transparent outline-none"
                   />
                 </div>

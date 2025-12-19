@@ -55,7 +55,7 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
 
             <div className="flex items-center gap-2 md:gap-3 pl-2 border-l border-gray-200">
               <div className="hidden sm:flex flex-col items-end">
-                <span className="text-sm font-medium">Prof. Erez Kachel</span>
+                <span className="text-sm font-medium">Prof. David Brown</span>
                 <span className="text-xs text-gray-500">Senior heart surgeon</span>
               </div>
               <div className="relative">

@@ -45,7 +45,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-mint-500 rounded-xl p-6 text-white">
           <h2 className="text-2xl font-bold mb-2">Welcome</h2>
-          <h3 className="text-xl mb-4">Prof. Erez Kachel</h3>
+          <h3 className="text-xl mb-4">Prof. David Brown</h3>
           <p className="text-sm opacity-90 mb-4">
             An AI-driven data platform for medical decision support, empowering heart teams to make data-driven, personalized treatment decisions, aiming to optimize recovery while minimizing complications for each patient.
           </p>
