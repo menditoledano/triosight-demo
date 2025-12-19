@@ -1,5 +1,7 @@
 import { LucideIcon } from 'lucide-react';
 
+export type StrategyType = 'A' | 'B' | 'C' | null;
+
 export interface PatientHeaderProps {
   name: string;
   id: string;
@@ -25,4 +27,16 @@ export interface PatientInfo {
   weight: string;
   allergies: string[];
   medications: string[];
+  selectedStrategy?: StrategyType;
+  trioScore?: number | null;
+}
+
+export interface Strategy {
+  id: StrategyType;
+  name: string;
+  score: number;
+  mortalityRate: string;
+  secondSurgeryRisk: string;
+  complicationRisk: string;
+  daysToRecovery: number;
 }

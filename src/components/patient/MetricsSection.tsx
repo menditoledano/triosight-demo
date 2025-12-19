@@ -108,7 +108,7 @@ export default function MetricsSection() {
   }, []);
 
   return (
-    <div className="grid grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       {animatedMetrics.map((metric, index) => (
         <MetricCard key={index} metric={metric} />
       ))}

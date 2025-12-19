@@ -8,7 +8,7 @@ export const ROUTES = {
   PATIENT: {
     LIST: '/patients',
     DETAILS: '/patient/:id',
-    CARD: '/patient-card',
+    CARD: '/patient/:id',
   },
   STATISTICS: '/statistics',
   SETTINGS: '/settings',

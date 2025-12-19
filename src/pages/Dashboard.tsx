@@ -1,18 +1,30 @@
 import React from 'react';
 import { Clock, Users, AlertCircle, Activity } from 'lucide-react';
 import PatientsList from '../components/PatientsList';
+import { usePatients } from '../context/PatientsContext';
 
 export default function Dashboard() {
+  const { patients } = usePatients();
+
+  const patientsWithScores = patients.filter((p) => p.trioScore !== null);
+  const averageTrioScore = patientsWithScores.length > 0
+    ? (patientsWithScores.reduce((sum, p) => sum + (p.trioScore || 0), 0) / patientsWithScores.length).toFixed(2)
+    : 'N/A';
+
+  const patientsNeedingAttention = patients.filter((p) => p.selectedStrategy === null).length;
+
+  const nextPatient = patients.find((p) => p.selectedStrategy === null);
+
   const stats = [
-    { icon: Clock, label: "Today's Priority", value: 'John Doe' },
-    { icon: Users, label: 'Next in line', value: '51', subtext: 'new patients' },
-    { icon: AlertCircle, label: 'Requires vet attention', value: '10+' },
-    { icon: Activity, label: 'TrioScore', value: '111111111?' },
+    { icon: Clock, label: "Today's Priority", value: nextPatient?.name || 'None' },
+    { icon: Users, label: 'Total Patients', value: patients.length.toString(), subtext: 'in system' },
+    { icon: AlertCircle, label: 'Requires Attention', value: patientsNeedingAttention.toString(), subtext: 'no strategy selected' },
+    { icon: Activity, label: 'Avg TrioScore', value: averageTrioScore },
   ];
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
           return (
@@ -30,7 +42,7 @@ export default function Dashboard() {
         })}
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-mint-500 rounded-xl p-6 text-white">
           <h2 className="text-2xl font-bold mb-2">Welcome</h2>
           <h3 className="text-xl mb-4">Prof. Erez Kachel</h3>
