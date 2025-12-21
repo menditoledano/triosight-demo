@@ -6,8 +6,8 @@ export default {
       colors: {
         mint: {
           50: '#e6faf9',
-          500: '#00c7be',
-          600: '#00b3ab',
+          500: '#4FD1C5',
+          600: '#4FD1C5',
         },
         navy: {
           900: '#1B1E3D',

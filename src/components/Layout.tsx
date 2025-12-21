@@ -42,7 +42,7 @@ export default function Layout() {
         {/* Collapse Toggle Button */}
         <button
           onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-          className="hidden lg:flex absolute -right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-md items-center justify-center text-gray-500 hover:text-[#00c7be] transition-colors"
+          className="hidden lg:flex absolute -right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-md items-center justify-center text-gray-500 hover:text-[#4FD1C5] transition-colors"
         >
           {sidebarCollapsed ? (
             <ChevronRight className="w-5 h-5" />

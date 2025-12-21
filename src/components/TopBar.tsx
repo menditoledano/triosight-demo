@@ -83,7 +83,7 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
                   ) : (
                     <button
                       onClick={() => handleBreadcrumbClick(crumb.path, crumb.isActive)}
-                      className="text-gray-500 hover:text-[#00c7be] transition-colors capitalize"
+                      className="text-gray-500 hover:text-[#4FD1C5] transition-colors capitalize"
                     >
                       {crumb.label}
                     </button>
@@ -99,7 +99,7 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
               <input
                 type="text"
                 placeholder="Search..."
-                className="pl-10 pr-4 py-2 w-64 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#00c7be] focus:border-transparent"
+                className="pl-10 pr-4 py-2 w-64 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4FD1C5] focus:border-transparent"
               />
             </div>
 
@@ -109,7 +109,7 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
               title="Notifications"
             >
               <Bell className="w-5 h-5 text-gray-600" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-[#00c7be] rounded-full"></span>
+              <span className="absolute top-1 right-1 w-2 h-2 bg-[#4FD1C5] rounded-full"></span>
             </button>
 
             <button 
@@ -135,7 +135,7 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
                   alt="Profile"
                   className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover ring-2 ring-gray-100"
                 />
-                <span className="absolute bottom-0 right-0 w-2 h-2 md:w-2.5 md:h-2.5 bg-[#00c7be] border-2 border-white rounded-full"></span>
+                <span className="absolute bottom-0 right-0 w-2 h-2 md:w-2.5 md:h-2.5 bg-[#4FD1C5] border-2 border-white rounded-full"></span>
               </div>
             </div>
           </div>

@@ -16,7 +16,7 @@ export default function MetricBar({ value, maxValue, label, score }: MetricBarPr
       <div className="flex items-center gap-4">
         <div className="w-48 h-1.5 bg-gray-200 rounded-full">
           <div
-            className="h-full bg-[#00c7be] rounded-full"
+            className="h-full bg-[#4FD1C5] rounded-full"
             style={{ width: `${percentage}%` }}
           />
         </div>

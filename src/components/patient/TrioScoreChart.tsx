@@ -37,7 +37,7 @@ function Strategy({ data, height, name }: any) {
   return (
     <div className="flex flex-col items-center">
       <div 
-        className="w-8 bg-[#00c7be] rounded-t-lg transition-all duration-300"
+        className="w-8 bg-[#4FD1C5] rounded-t-lg transition-all duration-300"
         style={{ height: `${height * 40}px` }}
       />
       <div className="mt-4 bg-[#1B1E3D] rounded-lg p-4 w-48">

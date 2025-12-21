@@ -60,7 +60,7 @@ export default function DetailedMetrics() {
               </div>
 
               <div className="text-right">
-                <span className="text-lg font-semibold text-[#00c7be]">
+                <span className="text-lg font-semibold text-[#4FD1C5]">
                   {metric.value.toFixed(1)}
                 </span>
               </div>
@@ -95,7 +95,7 @@ export default function DetailedMetrics() {
                 onChange={(e) => updateMetric(index, parseFloat(e.target.value))}
                 className="w-full h-8 py-3 touch-manipulation"
                 style={{
-                  background: `linear-gradient(to right, #00c7be ${(metric.value / metric.maxValue) * 100}%, #E5E7EB ${(metric.value / metric.maxValue) * 100}%)`
+                  background: `linear-gradient(to right, #4FD1C5 ${(metric.value / metric.maxValue) * 100}%, #E5E7EB ${(metric.value / metric.maxValue) * 100}%)`
                 }}
               />
             </div>

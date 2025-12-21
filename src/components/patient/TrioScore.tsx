@@ -102,13 +102,13 @@ function Strategy({ data, height, name, score, isSelected, onClick }: StrategyPr
       <div className="md:hidden w-full">
         <div className={`flex items-center justify-between p-4 rounded-xl transition-all duration-300 ${
           isSelected 
-            ? 'bg-[#00c7be]/10 border-2 border-[#00c7be] shadow-lg' 
-            : 'bg-[#252849] border-2 border-transparent hover:border-[#00c7be]/30'
+            ? 'bg-[#4FD1C5]/10 border-2 border-[#4FD1C5] shadow-lg' 
+            : 'bg-[#252849] border-2 border-transparent hover:border-[#4FD1C5]/30'
         }`}>
           <div className="flex items-center space-x-4 flex-1">
             <div className="text-center min-w-[60px]">
               <div className={`text-3xl font-bold transition-all duration-300 ${
-                isSelected ? 'text-[#00c7be]' : 'text-white'
+                isSelected ? 'text-[#4FD1C5]' : 'text-white'
               }`}>
                 {score.toFixed(1)}
               </div>
@@ -116,7 +116,7 @@ function Strategy({ data, height, name, score, isSelected, onClick }: StrategyPr
             </div>
             <div className="flex-1 min-w-0">
               <p className={`text-sm font-semibold mb-2 ${
-                isSelected ? 'text-[#00c7be]' : 'text-white'
+                isSelected ? 'text-[#4FD1C5]' : 'text-white'
               }`}>{name}</p>
               <div className="space-y-1.5 text-xs">
                 <div className="flex items-center justify-between">
@@ -132,7 +132,7 @@ function Strategy({ data, height, name, score, isSelected, onClick }: StrategyPr
           </div>
           
           {isSelected && (
-            <CheckCircle2 className="w-6 h-6 text-[#00c7be] flex-shrink-0 ml-3" />
+            <CheckCircle2 className="w-6 h-6 text-[#4FD1C5] flex-shrink-0 ml-3" />
           )}
         </div>
       </div>
@@ -146,7 +146,7 @@ function Strategy({ data, height, name, score, isSelected, onClick }: StrategyPr
             style={{ bottom: `${barHeight + 15}px` }}
           >
             <div className={`text-4xl font-bold transition-colors duration-300 mb-0.5 ${
-              isSelected ? 'text-[#00c7be]' : 'text-white'
+              isSelected ? 'text-[#4FD1C5]' : 'text-white'
             }`}>
               {score.toFixed(1)}
             </div>
@@ -160,14 +160,14 @@ function Strategy({ data, height, name, score, isSelected, onClick }: StrategyPr
             <div 
               className={`w-full rounded-t-lg transition-all duration-500 ease-in-out relative ${
                 isSelected 
-                  ? 'bg-gradient-to-t from-[#00c7be] to-[#00b3ab] shadow-lg shadow-[#00c7be]/30' 
+                  ? 'bg-gradient-to-t from-[#4FD1C5] to-[#4FD1C5] shadow-lg shadow-[#4FD1C5]/30' 
                   : 'bg-white/20 group-hover:bg-white/30'
               }`}
               style={{ height: `${barHeight}px`, minHeight: '8px' }}
             >
               {isSelected && (
                 <div 
-                  className="absolute inset-0 rounded-t-lg bg-[#00c7be] blur-md opacity-30"
+                  className="absolute inset-0 rounded-t-lg bg-[#4FD1C5] blur-md opacity-30"
                 />
               )}
             </div>
@@ -176,12 +176,12 @@ function Strategy({ data, height, name, score, isSelected, onClick }: StrategyPr
 
         <div className={`rounded-xl p-4 w-full transform transition-all duration-300 ${
           isSelected 
-            ? 'bg-[#00c7be]/10 border-2 border-[#00c7be] shadow-lg shadow-[#00c7be]/20' 
-            : 'bg-[#252849] border-2 border-transparent group-hover:border-[#00c7be]/30 group-hover:shadow-lg'
+            ? 'bg-[#4FD1C5]/10 border-2 border-[#4FD1C5] shadow-lg shadow-[#4FD1C5]/20' 
+            : 'bg-[#252849] border-2 border-transparent group-hover:border-[#4FD1C5]/30 group-hover:shadow-lg'
         }`}>
           {isSelected && (
             <div className="flex justify-center mb-3">
-              <CheckCircle2 className="w-5 h-5 text-[#00c7be]" />
+              <CheckCircle2 className="w-5 h-5 text-[#4FD1C5]" />
             </div>
           )}
           <div className="space-y-2.5">
@@ -207,7 +207,7 @@ function Strategy({ data, height, name, score, isSelected, onClick }: StrategyPr
         <div 
           className={`mt-3 px-4 py-2 rounded-lg transition-all duration-300 w-full text-center ${
             isSelected 
-              ? 'bg-[#00c7be]/20 text-[#00c7be] font-semibold' 
+              ? 'bg-[#4FD1C5]/20 text-[#4FD1C5] font-semibold' 
               : 'text-[#8F9BBA] hover:text-white'
           }`}
         >
@@ -258,9 +258,9 @@ export default function TrioScore({ patientId }: { patientId?: string }) {
       </div>
 
       {showConfirmation && (
-        <div className="mb-3 p-2 bg-[#00c7be]/20 border border-[#00c7be] rounded-lg flex items-center space-x-2">
-          <CheckCircle2 className="w-4 h-4 text-[#00c7be] flex-shrink-0" />
-          <span className="text-[#00c7be] font-medium text-xs">
+        <div className="mb-3 p-2 bg-[#4FD1C5]/20 border border-[#4FD1C5] rounded-lg flex items-center space-x-2">
+          <CheckCircle2 className="w-4 h-4 text-[#4FD1C5] flex-shrink-0" />
+          <span className="text-[#4FD1C5] font-medium text-xs">
             Strategy successfully saved! TrioScore updated.
           </span>
         </div>
@@ -294,7 +294,7 @@ export default function TrioScore({ patientId }: { patientId?: string }) {
         <div className="flex justify-center mt-4 pt-4 border-t border-[#252849]">
           <button
             onClick={handleSubmit}
-            className="w-full md:w-auto px-8 md:px-10 py-3 md:py-3.5 bg-gradient-to-r from-[#00c7be] to-[#00b3ab] hover:from-[#00b3ab] hover:to-[#00a099] text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#00c7be]/30 transform hover:scale-105 text-sm md:text-base"
+            className="w-full md:w-auto px-8 md:px-10 py-3 md:py-3.5 bg-gradient-to-r from-[#4FD1C5] to-[#4FD1C5] hover:from-[#4FD1C5] hover:to-[#4FD1C5] text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#4FD1C5]/30 transform hover:scale-105 text-sm md:text-base"
           >
             Submit Strategy
           </button>

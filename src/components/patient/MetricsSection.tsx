@@ -17,8 +17,8 @@ const metrics: Metric[] = [
     value: '6.9/178',
     change: '+55%',
     icon: Activity,
-    iconColor: 'text-[#00c7be]',
-    changeColor: 'text-[#00c7be]',
+    iconColor: 'text-[#4FD1C5]',
+    changeColor: 'text-[#4FD1C5]',
     animate: true
   },
   {
@@ -26,8 +26,8 @@ const metrics: Metric[] = [
     value: '160/100',
     change: '+5%',
     icon: Heart,
-    iconColor: 'text-[#00c7be]',
-    changeColor: 'text-[#00c7be]',
+    iconColor: 'text-[#4FD1C5]',
+    changeColor: 'text-[#4FD1C5]',
     animate: true
   },
   {
@@ -44,8 +44,8 @@ const metrics: Metric[] = [
     value: '$173,000',
     change: '+8%',
     icon: DollarSign,
-    iconColor: 'text-[#00c7be]',
-    changeColor: 'text-[#00c7be]',
+    iconColor: 'text-[#4FD1C5]',
+    changeColor: 'text-[#4FD1C5]',
     animate: true
   }
 ];
@@ -64,7 +64,7 @@ function MetricCard({ metric }: { metric: Metric }) {
         <span className="text-gray-500 text-sm font-medium">{metric.label}</span>
         <div 
           className={`p-2.5 rounded-xl transition-all duration-300 ${
-            isHovered ? 'bg-[#00c7be] text-white scale-110' : `${metric.iconColor} bg-[#00c7be]/10`
+            isHovered ? 'bg-[#4FD1C5] text-white scale-110' : `${metric.iconColor} bg-[#4FD1C5]/10`
           }`}
         >
           <Icon className="w-5 h-5" />

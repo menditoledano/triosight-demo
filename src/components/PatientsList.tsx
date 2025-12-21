@@ -133,7 +133,7 @@ export default function PatientsList() {
                         className="w-10 h-10 rounded-full object-cover"
                       />
                       <div>
-                        <p className="font-medium group-hover:text-[#00c7be] transition-colors">
+                        <p className="font-medium group-hover:text-[#4FD1C5] transition-colors">
                           {patient.name}
                         </p>
                         <p className="text-gray-500">{patient.email}</p>

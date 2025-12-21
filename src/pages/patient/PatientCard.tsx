@@ -46,14 +46,23 @@ export default function PatientCard() {
         </button>
 
         {/* Header with Wave Pattern */}
-        <div className="relative -mx-4 sm:-mx-6 lg:-mx-8 xl:-mx-10 -mt-6 lg:-mt-8 mb-6 lg:mb-8 bg-gradient-to-r from-[#00c7be] to-[#00b3ab] rounded-xl overflow-hidden">
-          <img
-            src="https://raw.githubusercontent.com/stackblitz/stackblitz-codeflow/main/wave-pattern.png"
-            alt="Background Pattern"
-            className="w-full h-40 object-cover opacity-20"
-          />
-          <div className="absolute inset-0">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-6 lg:py-8 h-full flex items-center">
+        <div 
+          className="relative -mx-4 sm:-mx-6 lg:-mx-8 xl:-mx-10 -mt-6 lg:-mt-8 mb-6 lg:mb-8 rounded-xl overflow-hidden h-40"
+          style={{
+            backgroundImage: 'url("/patient-header-wave.png")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: '#000000'
+          }}
+        >
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(to right, rgba(79, 209, 197, 0.85), rgba(79, 209, 197, 0.85))'
+            }}
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 h-full flex items-center">
               <div className="flex items-center space-x-5">
                 <img
                   src={patient.imageUrl}

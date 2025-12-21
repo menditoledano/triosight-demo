@@ -1,14 +1,9 @@
 import React from 'react';
-import { wavePattern } from '@/assets';
 import type { PatientHeaderProps } from '@/types';
 
 export default function PatientHeader({ name, id, imageUrl }: PatientHeaderProps) {
   return (
-    <div className="relative -mx-6 -mt-6 mb-6">
-      <img
-        src={wavePattern}
-        className="w-full h-32 object-cover"
-      />
+    <div className="relative -mx-6 -mt-6 mb-6 bg-gradient-to-r from-mint-500 to-mint-600">
       <div className="absolute inset-0 bg-gradient-to-r from-mint-500/90 to-mint-600/90">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex items-center space-x-4">

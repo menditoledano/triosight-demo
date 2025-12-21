@@ -44,17 +44,6 @@ export default function SignUp() {
 
     return (
         <div className="min-h-screen relative overflow-hidden">
-            {/* Background Image */}
-            <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{
-                    backgroundImage: 'url("/signup-background.png")',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            />
-
-            {/* Teal Header with Blur Effect */}
             <div className="absolute top-0 left-0 right-0 h-[50%] z-10 overflow-hidden">
                 <div 
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -62,32 +51,32 @@ export default function SignUp() {
                         backgroundImage: 'url("/signup-background.png")',
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
-                        filter: 'blur(12px)',
-                        transform: 'scale(1.1)',
                     }}
                 />
-                <div className="absolute inset-0 bg-[#00c7be]/75 backdrop-blur-[2px]"></div>
+                <div className="absolute inset-0 bg-[#4FD1C5]/75 backdrop-blur-[2px]"></div>
             </div>
+
+            <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-white z-0"></div>
 
             {/* Logo - Top Left */}
             <div className="absolute top-12 left-12 z-30">
-                <h1 className="text-3xl font-bold text-white drop-shadow-lg">
+                <h1 className="text-4xl font-bold text-white tracking-tight">
                     Triosight
                 </h1>
             </div>
 
-            {/* Welcome Text - Top Right */}
-            <div className="absolute top-12 right-12 z-30 text-right">
-                <h2 className="text-4xl font-bold text-white mb-2 drop-shadow-lg">
-                    Welcome!
-                </h2>
-                <p className="text-lg text-white/95 font-medium">
-                    Empowering Hearts using ML.
-                </p>
-            </div>
-
             {/* Main Content */}
             <div className="relative flex flex-col items-center justify-center min-h-screen px-4 py-20 z-20">
+                {/* Welcome Text - Centered Above Form */}
+                <div className="text-center mb-8 z-30">
+                    <h2 className="text-4xl font-bold text-white mb-2 tracking-tight">
+                        Welcome!
+                    </h2>
+                    <p className="text-lg text-white font-medium tracking-normal">
+                        Empowering Hearts using ML.
+                    </p>
+                </div>
+
                 {/* Sign Up Form */}
                 <div className="w-full max-w-[452px] bg-white rounded-[15px] shadow-2xl p-8">
                     <h3 className="text-center text-lg font-bold text-[#2D3748] mb-6">
@@ -149,7 +138,7 @@ export default function SignUp() {
                                 type="text"
                                 {...register('name')}
                                 placeholder="Your full name"
-                                className={`w-full h-[50px] px-4 border rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#00c7be] focus:border-transparent ${
+                                className={`w-full h-[50px] px-4 border rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#4FD1C5] focus:border-transparent ${
                                     errors.name ? 'border-red-500 bg-red-50' : 'border-[#E2E8F0]'
                                 }`}
                             />
@@ -167,7 +156,7 @@ export default function SignUp() {
                                 type="email"
                                 {...register('email')}
                                 placeholder="Your email address"
-                                className={`w-full h-[50px] px-4 border rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#00c7be] focus:border-transparent ${
+                                className={`w-full h-[50px] px-4 border rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#4FD1C5] focus:border-transparent ${
                                     errors.email ? 'border-red-500 bg-red-50' : 'border-[#E2E8F0]'
                                 }`}
                             />
@@ -185,8 +174,8 @@ export default function SignUp() {
                                 type="password"
                                 {...register('password')}
                                 placeholder="Your password"
-                                className={`w-full h-[50px] px-4 border-2 border-dashed rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#00c7be] focus:border-solid focus:border-[#00c7be] ${
-                                    errors.password ? 'border-red-500 bg-red-50' : 'border-[#00c7be]'
+                                className={`w-full h-[50px] px-4 border-2 border-dashed rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#4FD1C5] focus:border-solid focus:border-[#4FD1C5] ${
+                                    errors.password ? 'border-red-500 bg-red-50' : 'border-[#4FD1C5]'
                                 }`}
                             />
                             {errors.password && (
@@ -200,7 +189,7 @@ export default function SignUp() {
                                 <input
                                     type="checkbox"
                                     {...register('rememberMe')}
-                                    className="w-5 h-5 text-[#00c7be] border-[#E2E8F0] rounded focus:ring-2 focus:ring-[#00c7be]"
+                                    className="w-5 h-5 text-[#4FD1C5] border-[#E2E8F0] rounded focus:ring-2 focus:ring-[#4FD1C5]"
                                 />
                                 <span className="text-sm text-[#2D3748]">Remember me</span>
                             </label>
@@ -219,33 +208,32 @@ export default function SignUp() {
                     {/* Sign In Link */}
                     <p className="mt-6 text-center text-sm text-[#A0AEC0]">
                         Already have an account?{' '}
-                        <Link to="/signin" className="text-[#00c7be] hover:underline font-medium">
+                        <Link to="/signin" className="text-[#4FD1C5] hover:underline font-medium">
                             Sign in
                         </Link>
                     </p>
                 </div>
-
-                {/* Footer */}
-                <footer className="absolute bottom-6 left-0 right-0 text-center z-30">
-                    <div className="flex items-center justify-center gap-1 mb-4">
-                        <span className="text-xs text-white/80">© 2024, Made with</span>
-                        <Heart className="w-4 h-4 text-red-400 fill-current" />
-                        <span className="text-xs text-white/80">by</span>
-                        <span className="text-xs text-white font-semibold">Triosight</span>
-                    </div>
-                    <div className="flex justify-center gap-6">
-                        <Link to="/sample" className="text-xs text-white/70 hover:text-white transition-colors">
-                            Sample
-                        </Link>
-                        <Link to="/blog" className="text-xs text-white/70 hover:text-white transition-colors">
-                            Blog
-                        </Link>
-                        <Link to="/license" className="text-xs text-white/70 hover:text-white transition-colors">
-                            License
-                        </Link>
-                    </div>
-                </footer>
             </div>
+
+            <footer className="absolute bottom-6 left-0 right-0 z-30">
+                <div className="flex items-center justify-center gap-1 mb-3">
+                    <span className="text-xs text-gray-500">© 2024, Made with</span>
+                    <Heart className="w-3 h-3 text-red-500 fill-current" />
+                    <span className="text-xs text-gray-500">by</span>
+                    <span className="text-xs text-gray-600 font-medium lowercase">triosight</span>
+                </div>
+                <div className="flex justify-center gap-6">
+                    <Link to="/help" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">
+                        Help
+                    </Link>
+                    <Link to="/blog" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">
+                        Blog
+                    </Link>
+                    <Link to="/license" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">
+                        License
+                    </Link>
+                </div>
+            </footer>
 
             {/* Decorative Icons - Bottom Corners */}
             <div className="absolute bottom-6 left-6 z-30">

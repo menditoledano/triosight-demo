@@ -40,7 +40,7 @@ export default function DetailedMetricsChart() {
               <div className="flex items-center gap-4 flex-1">
                 <div className="flex-1 h-1.5 bg-gray-100 rounded-full">
                   <div
-                    className="h-full bg-[#00c7be] rounded-full"
+                    className="h-full bg-[#4FD1C5] rounded-full"
                     style={{ width: `${(metric.value / 10) * 100}%` }}
                   />
                 </div>

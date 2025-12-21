@@ -54,27 +54,28 @@ export default function SignIn() {
                         backgroundPosition: 'center',
                     }}
                 />
-                <div className="absolute inset-0 bg-[#00c7be]/75 backdrop-blur-[2px]"></div>
+                <div className="absolute inset-0 bg-[#4FD1C5]/75 backdrop-blur-[2px]"></div>
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-white z-0"></div>
 
             <div className="absolute top-12 left-12 z-30">
-                <h1 className="text-4xl font-bold text-white">
+                <h1 className="text-4xl font-bold text-white tracking-tight">
                     Triosight
                 </h1>
             </div>
 
-            <div className="absolute top-12 right-12 z-30 text-right">
-                <h2 className="text-4xl font-bold text-white mb-2">
-                    Welcome!
-                </h2>
-                <p className="text-lg text-white font-medium">
-                    Empowering Hearts using ML.
-                </p>
-            </div>
-
             <div className="relative flex flex-col items-center justify-center min-h-screen px-4 py-20 z-20">
+                {/* Welcome Text - Centered Above Form */}
+                <div className="text-center mb-8 z-30">
+                    <h2 className="text-4xl font-bold text-white mb-2 tracking-tight">
+                        Welcome!
+                    </h2>
+                    <p className="text-lg text-white font-medium tracking-normal">
+                        Empowering Hearts using ML.
+                    </p>
+                </div>
+
                 <div className="w-full max-w-[452px] bg-white rounded-[15px] shadow-2xl p-8">
                     <h3 className="text-center text-base font-bold text-[#2D3748] mb-6">
                         Sign in with
@@ -130,7 +131,7 @@ export default function SignIn() {
                                 type="email"
                                 {...register('email')}
                                 placeholder="Your email address"
-                                className={`w-full h-[50px] px-4 border rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#00c7be] focus:border-transparent ${
+                                className={`w-full h-[50px] px-4 border rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#4FD1C5] focus:border-transparent ${
                                     errors.email ? 'border-red-500 bg-red-50' : 'border-[#E2E8F0]'
                                 }`}
                             />
@@ -147,8 +148,8 @@ export default function SignIn() {
                                 type="password"
                                 {...register('password')}
                                 placeholder="Your password"
-                                className={`w-full h-[50px] px-4 border-2 border-dashed rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#00c7be] focus:border-solid focus:border-[#00c7be] ${
-                                    errors.password ? 'border-red-500 bg-red-50' : 'border-[#00c7be]'
+                                className={`w-full h-[50px] px-4 border-2 border-dashed rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#4FD1C5] focus:border-solid focus:border-[#4FD1C5] ${
+                                    errors.password ? 'border-red-500 bg-red-50' : 'border-[#4FD1C5]'
                                 }`}
                             />
                             {errors.password && (
@@ -164,7 +165,7 @@ export default function SignIn() {
                                     className="sr-only"
                                 />
                                 <div className={`w-10 h-6 rounded-full transition-colors ${
-                                    rememberMe ? 'bg-[#00c7be]' : 'bg-gray-300'
+                                    rememberMe ? 'bg-[#4FD1C5]' : 'bg-gray-300'
                                 }`}>
                                     <div className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform ${
                                         rememberMe ? 'translate-x-4' : 'translate-x-0.5'
@@ -185,7 +186,7 @@ export default function SignIn() {
 
                     <p className="mt-6 text-center text-sm text-[#A0AEC0]">
                         Don't have an account?{' '}
-                        <Link to="/signup" className="text-[#00c7be] hover:underline">
+                        <Link to="/signup" className="text-[#4FD1C5] hover:underline">
                             Sign up
                         </Link>
                     </p>
