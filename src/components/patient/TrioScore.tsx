@@ -250,11 +250,6 @@ export default function TrioScore({ patientId }: { patientId?: string }) {
     <div className="bg-[#1B1E3D] rounded-xl p-5 md:p-6">
       <div className="flex items-center justify-between mb-4 md:mb-5">
         <h3 className="text-xl md:text-2xl font-semibold text-white">TrioScore</h3>
-        <div className="flex items-center space-x-2 px-2 py-1 bg-[#252849] rounded-lg">
-          <span className="text-[#8F9BBA] text-xs font-medium">0</span>
-          <div className="w-px h-3 bg-[#8F9BBA]/30"></div>
-          <span className="text-[#8F9BBA] text-xs font-medium">8.2</span>
-        </div>
       </div>
 
       {showConfirmation && (

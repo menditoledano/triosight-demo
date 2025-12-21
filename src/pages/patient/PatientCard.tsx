@@ -58,30 +58,29 @@ export default function PatientCard() {
               background: 'linear-gradient(to right, rgba(79, 209, 197, 0.75), rgba(79, 209, 197, 0.75))'
             }}
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-6">
-              <div className="flex items-center justify-between">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-4 sm:py-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
                 {/* Left: Breadcrumbs */}
-                <div className="flex flex-col">
-                  <div className="flex items-center space-x-2 text-white text-sm mb-1">
-                    <button 
-                      onClick={() => navigate('/dashboard')}
-                      className="text-white/90 hover:text-white transition-colors"
-                    >
-                      Pages
-                    </button>
-                    <span className="text-white/70">/</span>
-                    <button 
-                      onClick={() => navigate('/dashboard')}
-                      className="text-white/90 hover:text-white transition-colors"
-                    >
-                      Patient Card
-                    </button>
-                  </div>
-                  <h1 className="text-2xl font-bold text-white">Profile</h1>
+                <div className="flex items-center space-x-1.5 sm:space-x-2 text-white text-xs sm:text-sm flex-shrink-0">
+                  <button 
+                    onClick={() => navigate('/dashboard')}
+                    className="text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap"
+                  >
+                    Pages
+                  </button>
+                  <span className="text-white/70">/</span>
+                  <button 
+                    onClick={() => navigate('/dashboard')}
+                    className="text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap"
+                  >
+                    Patient Card
+                  </button>
+                  <span className="text-white/70">/</span>
+                  <span className="text-white font-medium whitespace-nowrap">Profile</span>
                 </div>
 
                 {/* Right: Search Bar and Icons */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-end">
                   <div className="relative hidden md:block">
                     <Search className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input
@@ -93,25 +92,25 @@ export default function PatientCard() {
                   
                   <button 
                     onClick={() => navigate('/settings')}
-                    className="p-2 hover:bg-white/20 rounded-lg transition-colors"
+                    className="p-1.5 sm:p-2 hover:bg-white/20 rounded-lg transition-colors flex-shrink-0"
                     title="Settings"
                   >
-                    <Settings className="w-5 h-5 text-white" />
+                    <Settings className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </button>
 
-                  <div className="relative">
+                  <div className="relative flex-shrink-0">
                     <img
                       src={currentUser.imageUrl || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop'}
                       alt="Profile"
-                      className="w-8 h-8 rounded-full object-cover ring-2 ring-white"
+                      className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover ring-2 ring-white"
                     />
                   </div>
 
                   <button 
-                    className="p-2 hover:bg-white/20 rounded-lg transition-colors relative"
+                    className="p-1.5 sm:p-2 hover:bg-white/20 rounded-lg transition-colors relative flex-shrink-0"
                     title="Notifications"
                   >
-                    <Bell className="w-5 h-5 text-white" />
+                    <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </button>
                 </div>
               </div>

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Search, Bell, Settings, Menu } from 'lucide-react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { mockUser } from '../api/mocks';
+import { useLocation } from 'react-router-dom';
 
 interface TopBarProps {
   onMenuClick: () => void;
@@ -10,53 +8,8 @@ interface TopBarProps {
 
 export default function TopBar({ onMenuClick }: TopBarProps) {
   const location = useLocation();
-  const navigate = useNavigate();
-  const { user } = useAuth();
   const pathSegments = location.pathname.split('/').filter(Boolean);
   const currentPage = pathSegments[0] || 'dashboard';
-  
-  const currentUser = user || mockUser;
-
-  const handleSettingsClick = () => {
-    navigate('/settings');
-  };
-
-  const handleNotificationsClick = () => {
-    console.log('Notifications clicked');
-  };
-
-  const buildBreadcrumbs = () => {
-    const breadcrumbs = [];
-    
-    if (pathSegments.length === 0) {
-      return [{ label: 'Dashboard', path: '/dashboard', isActive: true }];
-    }
-
-    breadcrumbs.push({ label: 'Pages', path: '/dashboard', isActive: false });
-
-    if (pathSegments[0] === 'dashboard') {
-      breadcrumbs.push({ label: 'Dashboard', path: '/dashboard', isActive: true });
-    } else if (pathSegments[0] === 'patient') {
-      breadcrumbs.push({ label: 'Patient', path: '/dashboard', isActive: false });
-      if (pathSegments[1]) {
-        breadcrumbs.push({ label: `Patient #${pathSegments[1]}`, path: `/patient/${pathSegments[1]}`, isActive: true });
-      }
-    } else if (pathSegments[0] === 'statistics') {
-      breadcrumbs.push({ label: 'Statistics', path: '/statistics', isActive: true });
-    } else if (pathSegments[0] === 'settings') {
-      breadcrumbs.push({ label: 'Settings', path: '/settings', isActive: true });
-    }
-
-    return breadcrumbs;
-  };
-
-  const breadcrumbs = buildBreadcrumbs();
-
-  const handleBreadcrumbClick = (path: string, isActive: boolean) => {
-    if (!isActive) {
-      navigate(path);
-    }
-  };
 
   return (
     <header className="sticky top-0 z-10 bg-white border-b border-gray-200">
@@ -70,27 +23,11 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
               <Menu className="w-5 h-5" />
             </button>
 
-            <nav className="flex items-center space-x-2 text-sm" aria-label="Breadcrumb">
-              {breadcrumbs.map((crumb, index) => (
-                <React.Fragment key={index}>
-                  {index > 0 && (
-                    <span className="text-gray-400" aria-hidden="true">/</span>
-                  )}
-                  {crumb.isActive ? (
-                    <span className="text-gray-900 font-medium capitalize">
-                      {crumb.label}
-                    </span>
-                  ) : (
-                    <button
-                      onClick={() => handleBreadcrumbClick(crumb.path, crumb.isActive)}
-                      className="text-gray-500 hover:text-[#4FD1C5] transition-colors capitalize"
-                    >
-                      {crumb.label}
-                    </button>
-                  )}
-                </React.Fragment>
-              ))}
-            </nav>
+            <div className="flex items-center space-x-2 text-sm text-gray-500">
+              <span>Pages</span>
+              <span>/</span>
+              <span className="capitalize">{currentPage.replace('-', ' ')}</span>
+            </div>
           </div>
 
           <div className="flex items-center gap-2 md:gap-4">
@@ -99,24 +36,16 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
               <input
                 type="text"
                 placeholder="Search..."
-                className="pl-10 pr-4 py-2 w-64 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4FD1C5] focus:border-transparent"
+                className="pl-10 pr-4 py-2 w-64 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#00c7be] focus:border-transparent"
               />
             </div>
 
-            <button 
-              onClick={handleNotificationsClick}
-              className="p-2 hover:bg-gray-100 rounded-full relative"
-              title="Notifications"
-            >
+            <button className="p-2 hover:bg-gray-100 rounded-full relative">
               <Bell className="w-5 h-5 text-gray-600" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-[#4FD1C5] rounded-full"></span>
+              <span className="absolute top-1 right-1 w-2 h-2 bg-[#00c7be] rounded-full"></span>
             </button>
 
-            <button 
-              onClick={handleSettingsClick}
-              className="p-2 hover:bg-gray-100 rounded-full"
-              title="Settings"
-            >
+            <button className="p-2 hover:bg-gray-100 rounded-full">
               <Settings className="w-5 h-5 text-gray-600" />
             </button>
 
@@ -124,18 +53,18 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
               <Search className="w-5 h-5 text-gray-600" />
             </button>
 
-            <div className="flex items-center gap-2 md:gap-3 pl-2 border-l border-gray-200">
-              <div className="hidden sm:flex flex-col items-end">
-                <span className="text-sm font-medium">{currentUser.name}</span>
+            <div className="flex items-center gap-3 pl-2 border-l border-gray-200">
+              <div className="flex flex-col items-end">
+                <span className="text-sm font-medium">Prof. Erez Kachel</span>
                 <span className="text-xs text-gray-500">Senior heart surgeon</span>
               </div>
               <div className="relative">
                 <img
-                  src={currentUser.imageUrl || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop'}
+                  src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=150&h=150&fit=crop"
                   alt="Profile"
-                  className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover ring-2 ring-gray-100"
+                  className="w-10 h-10 rounded-full object-cover ring-2 ring-gray-100"
                 />
-                <span className="absolute bottom-0 right-0 w-2 h-2 md:w-2.5 md:h-2.5 bg-[#4FD1C5] border-2 border-white rounded-full"></span>
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#00c7be] border-2 border-white rounded-full"></span>
               </div>
             </div>
           </div>
