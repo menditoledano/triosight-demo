@@ -11,10 +11,12 @@ export default function Layout() {
 
   // Auto-collapse sidebar on patient card page
   useEffect(() => {
-    if (location.pathname === '/patient-card') {
+    if (location.pathname.startsWith('/patient/')) {
       setSidebarCollapsed(true);
     }
   }, [location.pathname]);
+
+  const isPatientCardPage = location.pathname.startsWith('/patient/');
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -59,9 +61,9 @@ export default function Layout() {
           ${sidebarCollapsed ? 'lg:pl-20' : 'lg:pl-64'}
         `}
       >
-        <TopBar onMenuClick={() => setSidebarOpen(true)} />
+        {!isPatientCardPage && <TopBar onMenuClick={() => setSidebarOpen(true)} />}
         <main className="flex-1 overflow-x-hidden">
-          <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+          <div className={isPatientCardPage ? 'max-w-full' : 'max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10'}>
             <Outlet />
           </div>
         </main>
