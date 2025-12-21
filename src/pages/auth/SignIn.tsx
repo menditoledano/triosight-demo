@@ -54,7 +54,7 @@ export default function SignIn() {
                         backgroundPosition: 'center',
                     }}
                 />
-                <div className="absolute inset-0 bg-[#4FD1C5]/75 backdrop-blur-[2px]"></div>
+                <div className="absolute inset-0 bg-mint-500/75 backdrop-blur-[2px]"></div>
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-white z-0"></div>
@@ -131,7 +131,7 @@ export default function SignIn() {
                                 type="email"
                                 {...register('email')}
                                 placeholder="Your email address"
-                                className={`w-full h-[50px] px-4 border rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#4FD1C5] focus:border-transparent ${
+                                className={`w-full h-[50px] px-4 border rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-mint-500 focus:border-transparent ${
                                     errors.email ? 'border-red-500 bg-red-50' : 'border-[#E2E8F0]'
                                 }`}
                             />
@@ -148,8 +148,8 @@ export default function SignIn() {
                                 type="password"
                                 {...register('password')}
                                 placeholder="Your password"
-                                className={`w-full h-[50px] px-4 border-2 border-dashed rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#4FD1C5] focus:border-solid focus:border-[#4FD1C5] ${
-                                    errors.password ? 'border-red-500 bg-red-50' : 'border-[#4FD1C5]'
+                                className={`w-full h-[50px] px-4 border-2 border-dashed rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-mint-500 focus:border-solid focus:border-mint-500 ${
+                                    errors.password ? 'border-red-500 bg-red-50' : 'border-mint-500'
                                 }`}
                             />
                             {errors.password && (
@@ -165,7 +165,7 @@ export default function SignIn() {
                                     className="sr-only"
                                 />
                                 <div className={`w-10 h-6 rounded-full transition-colors ${
-                                    rememberMe ? 'bg-[#4FD1C5]' : 'bg-gray-300'
+                                    rememberMe ? 'bg-mint-500' : 'bg-gray-300'
                                 }`}>
                                     <div className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform ${
                                         rememberMe ? 'translate-x-4' : 'translate-x-0.5'
@@ -186,7 +186,7 @@ export default function SignIn() {
 
                     <p className="mt-6 text-center text-sm text-[#A0AEC0]">
                         Don't have an account?{' '}
-                        <Link to="/signup" className="text-[#4FD1C5] hover:underline">
+                        <Link to="/signup" className="text-mint-500 hover:underline">
                             Sign up
                         </Link>
                     </p>

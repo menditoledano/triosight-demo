@@ -42,11 +42,11 @@ export default function Sidebar({ onClose, collapsed }: SidebarProps) {
         {!collapsed && (
           <h1 className="text-[28px] font-bold tracking-tight">
             <span className="text-gray-900">Trio</span>
-            <span className="text-[#4FD1C5]">sight</span>
+            <span className="text-mint-500">sight</span>
           </h1>
         )}
         {collapsed && (
-          <span className="text-[28px] font-bold text-[#4FD1C5]">T</span>
+          <span className="text-[28px] font-bold text-mint-500">T</span>
         )}
         {!collapsed && (
           <button 
@@ -75,7 +75,7 @@ export default function Sidebar({ onClose, collapsed }: SidebarProps) {
                       onClick={onClose}
                       className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
                         isActive
-                          ? 'text-[#4FD1C5] bg-[#4FD1C5]/10'
+                          ? 'text-mint-500 bg-mint-500/10'
                           : 'text-gray-600 hover:bg-gray-50'
                       }`}
                       title={collapsed ? item.name : undefined}

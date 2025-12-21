@@ -53,7 +53,7 @@ export default function SignUp() {
                         backgroundPosition: 'center',
                     }}
                 />
-                <div className="absolute inset-0 bg-[#4FD1C5]/75 backdrop-blur-[2px]"></div>
+                <div className="absolute inset-0 bg-mint-500/75 backdrop-blur-[2px]"></div>
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-white z-0"></div>
@@ -138,7 +138,7 @@ export default function SignUp() {
                                 type="text"
                                 {...register('name')}
                                 placeholder="Your full name"
-                                className={`w-full h-[50px] px-4 border rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#4FD1C5] focus:border-transparent ${
+                                className={`w-full h-[50px] px-4 border rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-mint-500 focus:border-transparent ${
                                     errors.name ? 'border-red-500 bg-red-50' : 'border-[#E2E8F0]'
                                 }`}
                             />
@@ -156,7 +156,7 @@ export default function SignUp() {
                                 type="email"
                                 {...register('email')}
                                 placeholder="Your email address"
-                                className={`w-full h-[50px] px-4 border rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#4FD1C5] focus:border-transparent ${
+                                className={`w-full h-[50px] px-4 border rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-mint-500 focus:border-transparent ${
                                     errors.email ? 'border-red-500 bg-red-50' : 'border-[#E2E8F0]'
                                 }`}
                             />
@@ -174,8 +174,8 @@ export default function SignUp() {
                                 type="password"
                                 {...register('password')}
                                 placeholder="Your password"
-                                className={`w-full h-[50px] px-4 border-2 border-dashed rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-[#4FD1C5] focus:border-solid focus:border-[#4FD1C5] ${
-                                    errors.password ? 'border-red-500 bg-red-50' : 'border-[#4FD1C5]'
+                                className={`w-full h-[50px] px-4 border-2 border-dashed rounded-[15px] text-sm focus:outline-none focus:ring-2 focus:ring-mint-500 focus:border-solid focus:border-mint-500 ${
+                                    errors.password ? 'border-red-500 bg-red-50' : 'border-mint-500'
                                 }`}
                             />
                             {errors.password && (
@@ -189,7 +189,7 @@ export default function SignUp() {
                                 <input
                                     type="checkbox"
                                     {...register('rememberMe')}
-                                    className="w-5 h-5 text-[#4FD1C5] border-[#E2E8F0] rounded focus:ring-2 focus:ring-[#4FD1C5]"
+                                    className="w-5 h-5 text-mint-500 border-[#E2E8F0] rounded focus:ring-2 focus:ring-mint-500"
                                 />
                                 <span className="text-sm text-[#2D3748]">Remember me</span>
                             </label>
@@ -208,7 +208,7 @@ export default function SignUp() {
                     {/* Sign In Link */}
                     <p className="mt-6 text-center text-sm text-[#A0AEC0]">
                         Already have an account?{' '}
-                        <Link to="/signin" className="text-[#4FD1C5] hover:underline font-medium">
+                        <Link to="/signin" className="text-mint-500 hover:underline font-medium">
                             Sign in
                         </Link>
                     </p>

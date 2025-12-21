@@ -88,7 +88,7 @@ export const mockUser: User = {
     name: 'Prof. David Brown',
     email: 'david.brown@triosight.com',
     role: 'doctor',
-    imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=150&h=150&fit=crop',
 };
 
 export class MockApiService {

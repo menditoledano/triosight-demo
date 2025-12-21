@@ -44,7 +44,7 @@ export default function Layout() {
         {/* Collapse Toggle Button */}
         <button
           onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-          className="hidden lg:flex absolute -right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-md items-center justify-center text-gray-500 hover:text-[#4FD1C5] transition-colors"
+          className="hidden lg:flex absolute -right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-md items-center justify-center text-gray-500 hover:text-mint-500 transition-colors"
         >
           {sidebarCollapsed ? (
             <ChevronRight className="w-5 h-5" />
@@ -61,9 +61,9 @@ export default function Layout() {
           ${sidebarCollapsed ? 'lg:pl-20' : 'lg:pl-64'}
         `}
       >
-        {!isPatientCardPage && <TopBar onMenuClick={() => setSidebarOpen(true)} />}
+        <TopBar onMenuClick={() => setSidebarOpen(true)} />
         <main className="flex-1 overflow-x-hidden">
-          <div className={isPatientCardPage ? 'max-w-full' : 'max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10'}>
+          <div className={isPatientCardPage ? 'max-w-full py-6' : 'max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10'}>
             <Outlet />
           </div>
         </main>

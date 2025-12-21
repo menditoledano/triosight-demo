@@ -26,9 +26,9 @@ export default function Settings() {
               <div className="flex items-center space-x-4">
                 <div className="relative">
                   <img
-                    src={currentUser.imageUrl || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop'}
+                    src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=150&h=150&fit=crop"
                     alt="Profile"
-                    className="w-20 h-20 rounded-full object-cover ring-4 ring-gray-50"
+                    className="w-20 h-20 rounded-full object-cover ring-2 ring-gray-100"
                   />
                   <span className="absolute bottom-0 right-0 w-4 h-4 bg-mint-500 border-2 border-white rounded-full"></span>
                 </div>

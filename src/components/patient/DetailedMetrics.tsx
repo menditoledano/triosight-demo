@@ -60,7 +60,7 @@ export default function DetailedMetrics() {
               </div>
 
               <div className="text-right">
-                <span className="text-lg font-semibold text-[#4FD1C5]">
+                <span className="text-lg font-semibold text-mint-500">
                   {metric.value.toFixed(1)}
                 </span>
               </div>
