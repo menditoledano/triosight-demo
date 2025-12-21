@@ -61,7 +61,7 @@ export default function Layout() {
       >
         <TopBar onMenuClick={() => setSidebarOpen(true)} />
         <main className="flex-1 overflow-x-hidden">
-          <div className="max-w-[1800px] mx-auto">
+          <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
             <Outlet />
           </div>
         </main>

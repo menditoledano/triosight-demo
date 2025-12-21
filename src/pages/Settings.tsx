@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Bell, Moon, Globe, Lock, UserCircle, Mail, Phone } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { mockUser } from '../api/mocks';
 
 export default function Settings() {
+  const { user } = useAuth();
+  const currentUser = user || mockUser;
+  const [isPhotoChanging, setIsPhotoChanging] = useState(false);
+
+  const handleChangePhoto = () => {
+    setIsPhotoChanging(true);
+    console.log('Change photo clicked - file picker would open here');
+    setTimeout(() => setIsPhotoChanging(false), 1000);
+  };
+
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="bg-white rounded-xl p-6">
@@ -14,19 +26,23 @@ export default function Settings() {
               <div className="flex items-center space-x-4">
                 <div className="relative">
                   <img
-                    src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=150&h=150&fit=crop"
+                    src={currentUser.imageUrl || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop'}
                     alt="Profile"
                     className="w-20 h-20 rounded-full object-cover ring-4 ring-gray-50"
                   />
                   <span className="absolute bottom-0 right-0 w-4 h-4 bg-mint-500 border-2 border-white rounded-full"></span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-gray-800">Prof. David Brown</h3>
-                  <p className="text-gray-500">erez.kachel@triosight.com</p>
+                  <h3 className="font-semibold text-lg text-gray-800">{currentUser.name}</h3>
+                  <p className="text-gray-500">{currentUser.email}</p>
                 </div>
               </div>
-              <button className="px-4 py-2 bg-mint-50 text-mint-600 rounded-lg hover:bg-mint-100 transition-colors font-medium">
-                Change Photo
+              <button 
+                onClick={handleChangePhoto}
+                disabled={isPhotoChanging}
+                className="px-4 py-2 bg-mint-50 text-mint-600 rounded-lg hover:bg-mint-100 transition-colors font-medium disabled:opacity-50"
+              >
+                {isPhotoChanging ? 'Changing...' : 'Change Photo'}
               </button>
             </div>
           </div>
@@ -42,7 +58,7 @@ export default function Settings() {
                   <UserCircle className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                   <input
                     type="text"
-                    defaultValue="Prof. David Brown"
+                    defaultValue={currentUser.name}
                     className="pl-10 w-full p-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-mint-500 focus:border-transparent outline-none"
                   />
                 </div>
@@ -54,7 +70,7 @@ export default function Settings() {
                   <Mail className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                   <input
                     type="email"
-                    defaultValue="erez.kachel@triosight.com"
+                    defaultValue={currentUser.email}
                     className="pl-10 w-full p-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-mint-500 focus:border-transparent outline-none"
                   />
                 </div>

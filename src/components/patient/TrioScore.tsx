@@ -43,9 +43,9 @@ function calculateStrategyData(metrics: any[]): Strategy[] {
   const minScore = Math.min(strategyScores.a, strategyScores.b, strategyScores.c);
   
   const normalizeScore = (score: number) => {
-    if (maxScore === minScore) return 5.5;
-    const normalized = 1 + ((score - minScore) / (maxScore - minScore)) * 9;
-    return Math.max(1, Math.min(10, normalized));
+    if (maxScore === minScore) return 4.1;
+    const normalized = 1 + ((score - minScore) / (maxScore - minScore)) * 7.2;
+    return Math.max(1, Math.min(8.2, normalized));
   };
 
   const normalizedScores = {
@@ -55,12 +55,13 @@ function calculateStrategyData(metrics: any[]): Strategy[] {
   };
 
   const calculateDynamicData = (score: number) => {
-    const invertedScore = 11 - score;
+    const invertedScore = 9.2 - score;
+    const normalizedInverted = invertedScore / 8.2;
     return {
-      mortality: (0.5 + (invertedScore / 10) * 4).toFixed(1) + '%',
-      surgeryRisk: (2 + (invertedScore / 10) * 13).toFixed(1) + '%',
-      complication: (5 + (invertedScore / 10) * 12).toFixed(1) + '%',
-      recovery: Math.round(30 + (invertedScore / 10) * 40)
+      mortality: (0.5 + normalizedInverted * 4).toFixed(1) + '%',
+      surgeryRisk: (2 + normalizedInverted * 13).toFixed(1) + '%',
+      complication: (5 + normalizedInverted * 12).toFixed(1) + '%',
+      recovery: Math.round(30 + normalizedInverted * 40)
     };
   };
 
@@ -90,6 +91,8 @@ function calculateStrategyData(metrics: any[]): Strategy[] {
 }
 
 function Strategy({ data, height, name, score, isSelected, onClick }: StrategyProps) {
+  const barHeight = Math.max((height / 8.2) * 100, 8);
+  
   return (
     <div 
       className="flex flex-col items-center group cursor-pointer w-full md:flex-1"
@@ -99,29 +102,28 @@ function Strategy({ data, height, name, score, isSelected, onClick }: StrategyPr
       <div className="md:hidden w-full">
         <div className={`flex items-center justify-between p-4 rounded-xl transition-all duration-300 ${
           isSelected 
-            ? 'bg-[#00c7be]/10 border-2 border-[#00c7be]' 
-            : 'bg-[#252849] border-2 border-transparent'
+            ? 'bg-[#00c7be]/10 border-2 border-[#00c7be] shadow-lg' 
+            : 'bg-[#252849] border-2 border-transparent hover:border-[#00c7be]/30'
         }`}>
-          {/* Left: Name and Score */}
-          <div className="flex items-center space-x-4">
-            <div className="text-center">
+          <div className="flex items-center space-x-4 flex-1">
+            <div className="text-center min-w-[60px]">
               <div className={`text-3xl font-bold transition-all duration-300 ${
                 isSelected ? 'text-[#00c7be]' : 'text-white'
               }`}>
                 {score.toFixed(1)}
               </div>
-              <div className="text-[#8F9BBA] text-[10px] uppercase tracking-wide">Score</div>
+              <div className="text-[#8F9BBA] text-[10px] uppercase tracking-wide mt-0.5">Score</div>
             </div>
-            <div>
-              <p className={`text-sm font-semibold mb-1 ${
+            <div className="flex-1 min-w-0">
+              <p className={`text-sm font-semibold mb-2 ${
                 isSelected ? 'text-[#00c7be]' : 'text-white'
               }`}>{name}</p>
-              <div className="space-y-1 text-xs">
-                <div className="flex items-center space-x-2">
+              <div className="space-y-1.5 text-xs">
+                <div className="flex items-center justify-between">
                   <span className="text-[#8F9BBA]">Mortality:</span>
                   <span className="text-white font-semibold">{data.mortality}</span>
                 </div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-between">
                   <span className="text-[#8F9BBA]">Recovery:</span>
                   <span className="text-white font-semibold">{data.recovery}d</span>
                 </div>
@@ -129,72 +131,73 @@ function Strategy({ data, height, name, score, isSelected, onClick }: StrategyPr
             </div>
           </div>
           
-          {/* Right: Check icon */}
           {isSelected && (
-            <CheckCircle2 className="w-6 h-6 text-[#00c7be] flex-shrink-0" />
+            <CheckCircle2 className="w-6 h-6 text-[#00c7be] flex-shrink-0 ml-3" />
           )}
         </div>
       </div>
 
       {/* Desktop: Vertical layout */}
-      <div className="hidden md:flex md:flex-col md:items-center">
-        <div className="relative w-full mb-5" style={{ height: '180px' }}>
-          {/* Score above bar - moves with bar */}
+      <div className="hidden md:flex md:flex-col md:items-center w-full">
+        <div className="relative w-full mb-4" style={{ height: '200px' }}>
+          {/* Score above bar */}
           <div 
-            className="absolute left-1/2 -translate-x-1/2 text-center transition-all duration-500 ease-in-out"
-            style={{ bottom: `${(height / 10) * 100 + 10}px` }}
+            className="absolute left-1/2 -translate-x-1/2 text-center transition-all duration-500 ease-in-out z-10"
+            style={{ bottom: `${barHeight + 15}px` }}
           >
-            <div className={`text-4xl font-bold transition-colors duration-300 ${
+            <div className={`text-4xl font-bold transition-colors duration-300 mb-0.5 ${
               isSelected ? 'text-[#00c7be]' : 'text-white'
             }`}>
               {score.toFixed(1)}
             </div>
-            <div className="text-[#8F9BBA] text-[10px] uppercase tracking-wide mt-0.5">
+            <div className="text-[#8F9BBA] text-[10px] uppercase tracking-wide">
               TrioScore
             </div>
           </div>
 
-          {/* Bar */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-10">
+          {/* Bar container */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12">
             <div 
-              className={`w-full rounded-t-lg transition-all duration-500 ease-in-out ${
-                isSelected ? 'bg-[#00c7be]' : 'bg-white/20 group-hover:bg-white/30'
+              className={`w-full rounded-t-lg transition-all duration-500 ease-in-out relative ${
+                isSelected 
+                  ? 'bg-gradient-to-t from-[#00c7be] to-[#00b3ab] shadow-lg shadow-[#00c7be]/30' 
+                  : 'bg-white/20 group-hover:bg-white/30'
               }`}
-              style={{ height: `${(height / 10) * 100}px` }}
-            />
-            {isSelected && (
-              <div 
-                className="absolute bottom-0 left-0 right-0 rounded-t-lg bg-[#00c7be] blur-md opacity-20 transition-all duration-500"
-                style={{ height: `${(height / 10) * 100}px` }}
-              />
-            )}
+              style={{ height: `${barHeight}px`, minHeight: '8px' }}
+            >
+              {isSelected && (
+                <div 
+                  className="absolute inset-0 rounded-t-lg bg-[#00c7be] blur-md opacity-30"
+                />
+              )}
+            </div>
           </div>
         </div>
 
         <div className={`rounded-xl p-4 w-full transform transition-all duration-300 ${
           isSelected 
-            ? 'bg-[#00c7be]/10 border-2 border-[#00c7be] scale-105' 
-            : 'bg-[#252849] border-2 border-transparent group-hover:scale-105 group-hover:shadow-xl'
+            ? 'bg-[#00c7be]/10 border-2 border-[#00c7be] shadow-lg shadow-[#00c7be]/20' 
+            : 'bg-[#252849] border-2 border-transparent group-hover:border-[#00c7be]/30 group-hover:shadow-lg'
         }`}>
           {isSelected && (
-            <div className="flex justify-center mb-2">
+            <div className="flex justify-center mb-3">
               <CheckCircle2 className="w-5 h-5 text-[#00c7be]" />
             </div>
           )}
-          <div className="space-y-2">
-            <div className="flex justify-between items-center">
+          <div className="space-y-2.5">
+            <div className="flex justify-between items-center py-0.5">
               <span className="text-[#8F9BBA] text-xs font-medium">Mortality</span>
               <span className="text-white text-sm font-semibold">{data.mortality}</span>
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center py-0.5">
               <span className="text-[#8F9BBA] text-xs font-medium">2nd Surgery</span>
               <span className="text-white text-sm font-semibold">{data.surgeryRisk}</span>
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center py-0.5">
               <span className="text-[#8F9BBA] text-xs font-medium">Complication</span>
               <span className="text-white text-sm font-semibold">{data.complication}</span>
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center py-0.5">
               <span className="text-[#8F9BBA] text-xs font-medium">Recovery</span>
               <span className="text-white text-sm font-semibold">{data.recovery}</span>
             </div>
@@ -202,11 +205,13 @@ function Strategy({ data, height, name, score, isSelected, onClick }: StrategyPr
         </div>
 
         <div 
-          className={`mt-2 px-3 py-1.5 rounded-lg transition-all duration-300 ${
-            isSelected ? 'bg-[#00c7be]/20 text-[#00c7be] font-semibold' : 'text-[#8F9BBA]'
+          className={`mt-3 px-4 py-2 rounded-lg transition-all duration-300 w-full text-center ${
+            isSelected 
+              ? 'bg-[#00c7be]/20 text-[#00c7be] font-semibold' 
+              : 'text-[#8F9BBA] hover:text-white'
           }`}
         >
-          <p className="text-xs font-medium">{name}</p>
+          <p className="text-sm font-medium">{name}</p>
         </div>
       </div>
     </div>
@@ -242,13 +247,13 @@ export default function TrioScore({ patientId }: { patientId?: string }) {
   };
 
   return (
-    <div className="bg-[#1B1E3D] rounded-xl p-4 md:p-5">
-      <div className="flex items-center justify-between mb-2 md:mb-3">
-        <h3 className="text-lg md:text-xl font-semibold text-white">TrioScore</h3>
-        <div className="flex items-center space-x-2">
-          <span className="text-[#8F9BBA] text-xs">0</span>
-          <div className="w-px h-3 bg-[#8F9BBA]/20"></div>
-          <span className="text-[#8F9BBA] text-xs">10</span>
+    <div className="bg-[#1B1E3D] rounded-xl p-5 md:p-6">
+      <div className="flex items-center justify-between mb-4 md:mb-5">
+        <h3 className="text-xl md:text-2xl font-semibold text-white">TrioScore</h3>
+        <div className="flex items-center space-x-2 px-2 py-1 bg-[#252849] rounded-lg">
+          <span className="text-[#8F9BBA] text-xs font-medium">0</span>
+          <div className="w-px h-3 bg-[#8F9BBA]/30"></div>
+          <span className="text-[#8F9BBA] text-xs font-medium">8.2</span>
         </div>
       </div>
 
@@ -274,7 +279,7 @@ export default function TrioScore({ patientId }: { patientId?: string }) {
       </div>
 
       {/* Desktop: Side by side */}
-      <div className="hidden md:flex md:justify-around md:items-end md:gap-3 mb-4">
+      <div className="hidden md:flex md:justify-between md:items-end md:gap-4 mb-4">
         {strategies.map((strategy) => (
           <Strategy 
             key={strategy.id} 
@@ -286,10 +291,10 @@ export default function TrioScore({ patientId }: { patientId?: string }) {
       </div>
 
       {selectedStrategy && patientId && (
-        <div className="flex justify-center mt-3">
+        <div className="flex justify-center mt-4 pt-4 border-t border-[#252849]">
           <button
             onClick={handleSubmit}
-            className="w-full md:w-auto px-6 md:px-8 py-2 md:py-2.5 bg-[#00c7be] hover:bg-[#00b3ab] text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm"
+            className="w-full md:w-auto px-8 md:px-10 py-3 md:py-3.5 bg-gradient-to-r from-[#00c7be] to-[#00b3ab] hover:from-[#00b3ab] hover:to-[#00a099] text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#00c7be]/30 transform hover:scale-105 text-sm md:text-base"
           >
             Submit Strategy
           </button>

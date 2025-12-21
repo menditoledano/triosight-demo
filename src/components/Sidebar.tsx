@@ -1,6 +1,8 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LayoutDashboard, Activity, FileText, Settings, User, LogOut, X } from 'lucide-react';
+import { useAuth } from '../hooks/useAuth';
+import { usePatients } from '../context/PatientsContext';
 
 interface SidebarProps {
   onClose?: () => void;
@@ -9,14 +11,30 @@ interface SidebarProps {
 
 export default function Sidebar({ onClose, collapsed }: SidebarProps) {
   const location = useLocation();
+  const navigate = useNavigate();
   const currentPath = location.pathname;
+  const { signOut } = useAuth();
+  const { patients } = usePatients();
+
+  const firstPatient = patients[0];
+  const patientPath = firstPatient ? `/patient/${firstPatient.id}` : '/dashboard';
 
   const menuItems = [
     { icon: LayoutDashboard, name: 'Dashboard', path: '/dashboard' },
-    { icon: Activity, name: 'Patient Card', path: '/patient-card' },
+    { icon: Activity, name: 'Patient Card', path: patientPath },
     { icon: FileText, name: 'Statistics', path: '/statistics' },
     { icon: Settings, name: 'Settings', path: '/settings' },
   ];
+
+  const handleLogout = async () => {
+    await signOut();
+    if (onClose) onClose();
+  };
+
+  const handleProfileClick = () => {
+    navigate('/settings');
+    if (onClose) onClose();
+  };
 
   return (
     <div className="h-full flex flex-col bg-white border-r border-gray-200">
@@ -77,18 +95,18 @@ export default function Sidebar({ onClose, collapsed }: SidebarProps) {
             )}
             <ul className="space-y-1">
               <li>
-                <Link 
-                  to="/profile" 
-                  onClick={onClose}
-                  className="flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-50"
+                <button 
+                  onClick={handleProfileClick}
+                  className="w-full flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-50"
                   title={collapsed ? 'Profile' : undefined}
                 >
                   <User className="w-5 h-5 flex-shrink-0" />
                   {!collapsed && <span className="ml-3 truncate">Profile</span>}
-                </Link>
+                </button>
               </li>
               <li>
                 <button 
+                  onClick={handleLogout}
                   className="w-full flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-50"
                   title={collapsed ? 'Logout' : undefined}
                 >

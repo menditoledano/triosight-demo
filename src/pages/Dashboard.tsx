@@ -1,46 +1,63 @@
-import React from 'react';
 import { Clock, Users, AlertCircle, Activity } from 'lucide-react';
 import PatientsList from '../components/PatientsList';
 import { usePatients } from '../context/PatientsContext';
+import { SkeletonCard, ErrorMessage } from '../components/common';
 
 export default function Dashboard() {
-  const { patients } = usePatients();
+    const { patients, isLoading, error } = usePatients();
 
-  const patientsWithScores = patients.filter((p) => p.trioScore !== null);
-  const averageTrioScore = patientsWithScores.length > 0
-    ? (patientsWithScores.reduce((sum, p) => sum + (p.trioScore || 0), 0) / patientsWithScores.length).toFixed(2)
-    : 'N/A';
+    const patientsWithScores = patients.filter((p) => p.trioScore !== null);
+    const averageTrioScore = patientsWithScores.length > 0
+        ? (patientsWithScores.reduce((sum, p) => sum + (p.trioScore || 0), 0) / patientsWithScores.length).toFixed(2)
+        : 'N/A';
 
-  const patientsNeedingAttention = patients.filter((p) => p.selectedStrategy === null).length;
+    const patientsNeedingAttention = patients.filter((p) => p.selectedStrategy === null).length;
 
-  const nextPatient = patients.find((p) => p.selectedStrategy === null);
+    const nextPatient = patients.find((p) => p.selectedStrategy === null);
 
-  const stats = [
-    { icon: Clock, label: "Today's Priority", value: nextPatient?.name || 'None' },
-    { icon: Users, label: 'Total Patients', value: patients.length.toString(), subtext: 'in system' },
-    { icon: AlertCircle, label: 'Requires Attention', value: patientsNeedingAttention.toString(), subtext: 'no strategy selected' },
-    { icon: Activity, label: 'Avg TrioScore', value: averageTrioScore },
-  ];
+    const stats = [
+        { icon: Clock, label: "Today's Priority", value: nextPatient?.name || 'None' },
+        { icon: Users, label: 'Total Patients', value: patients.length.toString(), subtext: 'in system' },
+        { icon: AlertCircle, label: 'Requires Attention', value: patientsNeedingAttention.toString(), subtext: 'no strategy selected' },
+        { icon: Activity, label: 'Avg TrioScore', value: averageTrioScore },
+    ];
 
-  return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {stats.map((stat, index) => {
-          const Icon = stat.icon;
-          return (
-            <div key={index} className="bg-white p-4 rounded-xl shadow-sm">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-500 text-sm">{stat.label}</span>
-                <Icon className="w-5 h-5 text-mint-500" />
-              </div>
-              <div>
-                <p className="text-lg font-semibold">{stat.value}</p>
-                {stat.subtext && <p className="text-sm text-gray-500">{stat.subtext}</p>}
-              </div>
+    if (error) {
+        return (
+            <div className="space-y-6">
+                <ErrorMessage 
+                    title="Failed to load dashboard" 
+                    message={error} 
+                />
             </div>
-          );
-        })}
-      </div>
+        );
+    }
+
+    return (
+        <div className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {isLoading ? (
+                    Array.from({ length: 4 }).map((_, index) => (
+                        <SkeletonCard key={index} />
+                    ))
+                ) : (
+                    stats.map((stat, index) => {
+                        const Icon = stat.icon;
+                        return (
+                            <div key={index} className="bg-white p-4 rounded-xl shadow-sm">
+                                <div className="flex items-center justify-between mb-2">
+                                    <span className="text-gray-500 text-sm">{stat.label}</span>
+                                    <Icon className="w-5 h-5 text-mint-500" />
+                                </div>
+                                <div>
+                                    <p className="text-lg font-semibold">{stat.value}</p>
+                                    {stat.subtext && <p className="text-sm text-gray-500">{stat.subtext}</p>}
+                                </div>
+                            </div>
+                        );
+                    })
+                )}
+            </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-mint-500 rounded-xl p-6 text-white">
@@ -49,9 +66,14 @@ export default function Dashboard() {
           <p className="text-sm opacity-90 mb-4">
             An AI-driven data platform for medical decision support, empowering heart teams to make data-driven, personalized treatment decisions, aiming to optimize recovery while minimizing complications for each patient.
           </p>
-          <button className="text-sm hover:underline">
+          <a 
+            href="https://triosight.com/about" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-sm hover:underline inline-flex items-center gap-1"
+          >
             Read more →
-          </button>
+          </a>
         </div>
 
         <div className="bg-navy-900 rounded-xl p-6 text-white relative overflow-hidden">
@@ -60,9 +82,14 @@ export default function Dashboard() {
             <p className="text-sm opacity-90 mb-4">
               We're here to Empower your Heart Team, Using AI, Performing the most precise surgery, with the least possible risk for the optimal recovery.
             </p>
-            <button className="text-sm hover:underline">
+            <a 
+              href="https://triosight.com/contact" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-sm hover:underline inline-flex items-center gap-1"
+            >
               Read more →
-            </button>
+            </a>
           </div>
           <img
             src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&q=80"

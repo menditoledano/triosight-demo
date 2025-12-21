@@ -1,3 +1,2 @@
-export * from './auth.service';
-export * from './patient.service';
-export * from './api.service';
+export { authService } from './auth.service';
+export { patientService } from './patient.service';

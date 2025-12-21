@@ -7,7 +7,6 @@ export default function PatientHeader({ name, id, imageUrl }: PatientHeaderProps
     <div className="relative -mx-6 -mt-6 mb-6">
       <img
         src={wavePattern}
-        alt="Background Pattern"
         className="w-full h-32 object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-mint-500/90 to-mint-600/90">
